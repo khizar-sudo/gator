@@ -68,6 +68,7 @@ func Init() {
 	commands.register("login", handlerLogin)
 	commands.register("register", handlerRegister)
 	commands.register("reset", handlerReset)
+	commands.register("users", handlerUsers)
 
 	// fetch CLI arguments
 	args := os.Args
