@@ -12,18 +12,18 @@ type Config struct {
 
 const configFilePath = "./gatorconfig.json"
 
-func Read() Config {
+func Read() (Config, error) {
 	data, err := os.ReadFile(configFilePath)
 	if err != nil {
-		return Config{}
+		return Config{}, err
 	}
 
 	var config Config
 	if err := json.Unmarshal(data, &config); err != nil {
-		return Config{}
+		return Config{}, err
 	}
 
-	return config
+	return config, nil
 }
 
 func (c *Config) SetUser() error {

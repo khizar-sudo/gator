@@ -2,15 +2,24 @@ package main
 
 import (
 	"fmt"
+	"log"
 
 	"github.com/khizar-sudo/feed-aggregator/internal/config"
 )
 
 func main() {
-	cfg := config.Read()
+	cfg, err := config.Read()
+	if err != nil {
+		log.Fatalf("error reading config: %v", err)
+	}
+
 	cfg.CurrentUserName = "khizar"
 	cfg.SetUser()
-	cfg = config.Read()
 
-	fmt.Println(cfg)
+	cfg, err = config.Read()
+	if err != nil {
+		log.Fatalf("error reading config: %v", err)
+	}
+
+	fmt.Printf("Read config again: %+v\n", cfg)
 }
