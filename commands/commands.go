@@ -71,6 +71,7 @@ func Init() {
 	commands.register("users", handlerUsers)
 	commands.register("agg", handlerAgg)
 	commands.register("addfeed", handlerAddFeed)
+	commands.register("feeds", handlerFeeds)
 
 	// fetch CLI arguments
 	args := os.Args
