@@ -28,7 +28,7 @@ func handlerAddFeed(s *state, cmd command) error {
 		UserID:    user.ID,
 	})
 
-	fmt.Printf("Feed fetched %+v\n", feed)
+	printFeed(feed, user)
 
 	return nil
 }

@@ -2,7 +2,6 @@ package commands
 
 import (
 	"context"
-	"fmt"
 )
 
 func handlerFeeds(s *state, cmd command) error {
@@ -12,8 +11,13 @@ func handlerFeeds(s *state, cmd command) error {
 	}
 
 	for _, feed := range feeds {
-		fmt.Printf("%+v", feed)
+		user, err := s.db.GetUserFromID(context.Background(), feed.UserID)
+		if err != nil {
+			return err
+		}
+		printFeed(feed, user)
 	}
 
 	return nil
 }
+

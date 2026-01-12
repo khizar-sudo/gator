@@ -27,6 +27,6 @@ func handlerRegister(s *state, cmd command) error {
 	}
 
 	s.cfg.SetUser(user.Name)
-	fmt.Printf("User created successfully: %v\n", user)
+	printUser(user)
 	return nil
 }
