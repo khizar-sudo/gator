@@ -8,8 +8,17 @@ Before running this program, you'll need to have the following installed on your
 
 - **Go** (version 1.20 or higher) - [Download and install Go](https://go.dev/doc/install)
 - **PostgreSQL** - [Download and install PostgreSQL](https://www.postgresql.org/download/)
+- **Goose** - Database migration tool
 
 Make sure PostgreSQL is running and you have access to create databases.
+
+### Installing Goose
+
+Install goose using Go:
+
+```bash
+go install github.com/pressly/goose/v3/cmd/goose@latest
+```
 
 ## Installation
 
@@ -36,15 +45,35 @@ export PATH=$PATH:$(go env GOPATH)/bin
 CREATE DATABASE gator;
 ```
 
-2. Run the SQL schema migrations in the `sql/schema` directory in order:
+2. Run the database migrations using goose:
 
 ```bash
-psql -d gator -f sql/schema/001_users.sql
-psql -d gator -f sql/schema/002_feeds.sql
-psql -d gator -f sql/schema/003_feed_follows.sql
-psql -d gator -f sql/schema/004_feed_last_fetched.sql
-psql -d gator -f sql/schema/005_posts.sql
+cd sql/schema
+goose postgres "postgres://username:password@localhost:5432/gator?sslmode=disable" up
 ```
+
+Replace `username` and `password` with your PostgreSQL credentials.
+
+This will automatically run all migration files in the correct order. Goose tracks which migrations have been applied, so it's safe to run this command multiple times.
+
+### Other Useful Goose Commands
+
+- **Check migration status:**
+
+  ```bash
+  goose postgres "postgres://username:password@localhost:5432/gator?sslmode=disable" status
+  ```
+
+- **Rollback the last migration:**
+
+  ```bash
+  goose postgres "postgres://username:password@localhost:5432/gator?sslmode=disable" down
+  ```
+
+- **Reset database (rollback all migrations):**
+  ```bash
+  goose postgres "postgres://username:password@localhost:5432/gator?sslmode=disable" reset
+  ```
 
 ## Configuration
 
@@ -196,6 +225,7 @@ gator browse 5
 This project uses:
 
 - [sqlc](https://sqlc.dev/) for type-safe SQL queries
+- [goose](https://github.com/pressly/goose) for database migrations
 - PostgreSQL for data storage
 - Native Go RSS parsing
 
