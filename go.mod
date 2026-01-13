@@ -1,4 +1,4 @@
-module github.com/khizar-sudo/feed-aggregator
+module github.com/khizar-sudo/gator
 
 go 1.25.5
 

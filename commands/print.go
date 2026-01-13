@@ -3,7 +3,7 @@ package commands
 import (
 	"fmt"
 
-	"github.com/khizar-sudo/feed-aggregator/internal/database"
+	"github.com/khizar-sudo/gator/internal/database"
 )
 
 func printFeed(feed database.Feed, user database.User) {

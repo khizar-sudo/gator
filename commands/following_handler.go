@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/khizar-sudo/feed-aggregator/internal/database"
+	"github.com/khizar-sudo/gator/internal/database"
 )
 
 func handlerFollowing(s *state, cmd command, user database.User) error {

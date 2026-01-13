@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/khizar-sudo/feed-aggregator/internal/database"
+	"github.com/khizar-sudo/gator/internal/database"
 )
 
 func handlerAddFeed(s *state, cmd command, user database.User) error {

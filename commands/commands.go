@@ -6,8 +6,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/khizar-sudo/feed-aggregator/internal/config"
-	"github.com/khizar-sudo/feed-aggregator/internal/database"
+	"github.com/khizar-sudo/gator/internal/config"
+	"github.com/khizar-sudo/gator/internal/database"
 	_ "github.com/lib/pq"
 )
 

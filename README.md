@@ -16,7 +16,7 @@ Make sure PostgreSQL is running and you have access to create databases.
 Install the `gator` CLI using Go's install command:
 
 ```bash
-go install github.com/khizar-sudo/feed-aggregator@latest
+go install github.com/khizar-sudo/gator@latest
 ```
 
 This will download, compile, and install the `gator` binary to your `$GOPATH/bin` directory (or `$GOBIN` if set).

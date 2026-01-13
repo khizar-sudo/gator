@@ -8,8 +8,8 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/khizar-sudo/feed-aggregator/feed"
-	"github.com/khizar-sudo/feed-aggregator/internal/database"
+	"github.com/khizar-sudo/gator/feed"
+	"github.com/khizar-sudo/gator/internal/database"
 )
 
 func handlerAgg(s *state, cmd command) error {
